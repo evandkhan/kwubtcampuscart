@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusCart - Marketplace Eksklusif Kampus ITS</title>
+    <style>
+        :root {
+            --primary-color: #0b3c5d;
+            --secondary-color: #328cc1;
+            --accent-color: #d9b310;
+            --dark-color: #1d2731;
+            --light-bg: #f9fbfd;
+            --white: #ffffff;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header / Navbar style */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: table;
+            width: 100%;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: table-cell;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            vertical-align: middle;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #051c2c 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 179, 16, 0.4);
+        }
+
+        .cta-btn:hover {
+            background-color: #eed033;
+            transform: translateY(-2px);
+        }
+
+        /* Video Presentation Section */
+        .video-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .video-container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            position: relative;
+            display: table;
+        }
+
+        .video-placeholder-text {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .play-icon {
+            font-size: 50px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Features Section Layout via Table-cell to ensure compatibility */
+        .features-grid {
+            display: table;
+            width: 100%;
+            margin: 40px 0;
+            border-collapse: separate;
+            border-spacing: 20px 0;
+        }
+
+        .feature-card {
+            display: table-cell;
+            width: 33.33%;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            vertical-align: top;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: #f0f4f8;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .price-box {
+            background: var(--white);
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 2px solid var(--accent-color);
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: table;
+            width: 100%;
+            margin: 40px 0;
+            border-collapse: separate;
+            border-spacing: 20px 0;
+        }
+
+        .team-card {
+            display: table-cell;
+            width: 33.33%;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #e2e8f0;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            line-height: 80px;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .team-card h4 {
+            color: var(--dark-color);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .role {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        footer p {
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .company-tag {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Campus<span>Cart</span></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mengubah Cara Mahasiswa ITS Berbisnis</h1>
+            <p>Marketplace eksklusif kampus yang tepat sasaran untuk meningkatkan omzet produk kreatif dan jasa keahlian akademis Anda.</p>
+            <a href="#video-pitch" class="cta-btn">Lihat Demo Promosi</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Video Pitch Section -->
+        <section id="video-pitch" class="video-section">
+            <h2 class="section-title">Video Promosi Penjualan (45-60 Detik)</h2>
+            <p class="section-subtitle">Tonton bagaimana CampusCart menyelesaikan masalah wirausaha mahasiswa di lingkungan ITS.</p>
+            
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-text">
+                        <span class="play-icon">▶</span>
+                        <p style="font-weight: bold; margin-bottom: 10px;">[ Tautan Video Promosi Anda Akan Muncul di Sini ]</p>
+                        <p style="color: var(--text-muted); font-size: 14px; max-width: 500px; margin: 0 auto;">
+                            Rekam skrip 45-60 detik Anda, unggah ke Drive/YouTube, lalu masukkan tautan URL sematan di bagian komponen ini.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keunggulan Section -->
+        <section style="padding: 40px 0;">
+            <h2 class="section-title">Mengapa Memilih CampusCart?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Pasar Tepat Sasaran</h3>
+                    <p>Langsung terhubung dengan ribuan civitas akademika dan mahasiswa aktif ITS yang membutuhkan produk atau keahlian spesifik Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Verifikasi Aman</h3>
+                    <p>Menggunakan sistem verifikasi email kampus terintegrasi, menciptakan ekosistem transaksi internal yang jauh lebih tepercaya.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Rekomendasi Pintar</h3>
+                    <p>Didukung algoritma analisis data pintar untuk mencocokkan penjual dan pembeli secara akurat berdasarkan kebutuhan riil.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Bisnis & Harga -->
+        <section class="pricing">
+            <h2 class="section-title">Strategi Layanan Premium</h2>
+            <p class="section-subtitle">Dukung pertumbuhan bisnismu ke tingkat maksimal dengan fitur terlengkap.</p>
+            <div class="price-box">
+                <div class="role" style="letter-spacing: 1px;">Langganan Premium Bulanan</div>
+                <div class="price">Rp 79.000 <span style="font-size: 14px; font-weight: normal; color: var(--text-muted);">/ bulan</span></div>
+                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 25px;">
+                    Akses etalase prioritas, dashboard analitik penjualan, dan optimasi promosi otomatis di aplikasi.
+                </p>
+                <a href="#" class="cta-btn">Daftar Sekarang</a>
+            </div>
+        </section>
+
+        <!-- Tim Pengembang -->
+        <section style="padding: 40px 0;">
+            <h2 class="section-title">Venture Team Kami</h2>
+            <p class="section-subtitle">Mahasiswa Institut Teknologi Sepuluh Nopember siap membangun ekosistem digital terbaik.</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="avatar">MD</div>
+                    <h4>Michael L Djie</h4>
+                    <div class="role">Chief Executive Officer (CEO)</div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">KD</div>
+                    <h4>Komang Desta Andika</h4>
+                    <div class="role">Chief Marketing Officer (CMO)</div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">EK</div>
+                    <h4>Evand Khan</h4>
+                    <div class="role">Chief Technology Officer (CTO)</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CampusCart Project. All Rights Reserved.</p>
+            <p>Dikembangkan oleh <span class="company-tag">PT. PRISMA BERKAT GRUP</span>, Surabaya</p>
+        </div>
+    </footer>
+
+</body>
+</html>
